@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Reviews</title>
+    <link rel="stylesheet" href="./styles/main.css">
+</head>
+
+<body>
+  <h1>London Gastro Scene</h1>
+
+  <!-- Form to Add a New item -->
+  <form action="/add" method="post">
+    <input type="text" id="restaurant" name="restaurant" class="restaurant-input" placeholder="🍴Resto Name" required>
+    
+    <input type="text" id="review" name="review" class="review-input" autocomplete="off" placeholder="✍🏽Review" required>
+    
+    <input type="number" id="ranking" name="ranking" class="ranking-input" min="1" max="5" autocomplete="off" placeholder="⭐️Rating (1-5)" required>
+
+    <input type="text" id="name" name="name" class="name-input" placeholder="👤Your Name" required>
+    
+    <button type="submit">Add</button>
+  </form>
+
+  <form action="/filter" method="get">
+    <button type="submit">Sort by Rating (High to Low)</button>
+  </form>
+
+    <!-- List of Items -->
+  <div class="container">
+    <ul id="itemsList">
+      <% items.forEach(item => { %>
+      <li>
+        <!-- Displaying all posts -->
+        <div id="text-<%= item.id %>" class="item-info">
+          <h2><%= item.restaurant %></h2>
+          <p>Review: <%= item.comments_about %></p>
+          <p>Rating: <%= item.ranking %></p>
+          <p>Date: <%= item.created_at %></p> 
+          <p>Name: <%= item.name %></p> 
+
+        <!-- Button to DISPLAY the EDIT form-->
+        <div class="edit-button">
+          <!-- hides the non-editable text view and shows an editable form, allowing the user to modify the content directly in the form -->
+          <button onclick=
+          "document.getElementById('text-<%= item.id %>').style.display='none';
+          document.getElementById('edit-form-<%= item.id %>').style.display='block';">✏️ Edit</button>
+        </div>
+
+        <!-- Button to DELETE an item -->
+        <div class="delete-button">
+          <form action="/delete" method="post">
+              <input type="hidden" name="itemIdToBeDeleted" value="<%= item.id %>">
+              <button type="submit">❌ Delete</button>
+          </form>
+        </div>
+
+        </div>
+
+      <!-- Edit form that appears in the same place when you click Edit -->
+      <div id="edit-form-<%= item.id %>" class="edit-form">
+        <form action="/edit" class="updating-form" method="post">
+        <ul>
+          <input type="hidden" name="itemIdToBeEdited" value="<%= item.id %>"> 
+          <li> <input type="text"  name="updatedRestaurant" value="<%= item.restaurant %>" autocomplete="off" required> </li>
+          <li> <input type="text"  name="updatedReview" value="<%= item.comments_about %>" autocomplete="off" required> </li>
+          <li> <input type="number" name="updatedRanking" value="<%= item.ranking %>" autocomplete="off" required> </li>
+          <li> <input type="text"  name="updatedName" value="<%= item.name %>" autocomplete="off" required> </li>
+          <li> <button type="submit">Save changes</button> </li>
+        </ul>
+        </form>
+      </div>
+      </li>
+
+      <% }); %>
+    </ul>
+  </div>
+
+</body>
+</html>

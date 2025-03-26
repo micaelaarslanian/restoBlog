@@ -1,0 +1,101 @@
+html {
+    background-color: olive;
+    min-height: 1000px;
+    font-family: "helvetica neue";
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    min-height: 95vh;
+}
+main {
+    text-align: center;
+    flex: 1 0 auto;
+  }
+h1 {
+    color: #fff;
+    padding: 10px;
+}
+.edit-form {
+    display: none;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    background-color: #dcdcdc;
+    border-radius: 1px;
+    width: 400px;
+}
+
+.edit-form input {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 1px;
+    border: none;
+    width: 400px;
+}
+
+li{
+    list-style-type: none;
+    padding: 10px;
+    margin: 10px;
+    background-color: #dcdcdc;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+}
+
+.restaurant-input {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 1px;
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+}
+
+.review-input {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 1px;
+    padding: 10px;
+    margin: 10px;
+    width: 350px;
+}
+
+.ranking-input {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 1px;
+    padding: 10px;
+    margin: 10px;
+    width: 100px;
+}
+
+.name-input {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 1px;
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+}
+
+button {
+    background-color: #260207;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 1px;
+}
